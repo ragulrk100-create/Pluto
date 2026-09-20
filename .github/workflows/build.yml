@@ -19,6 +19,12 @@ jobs:
           echo "Found zip: $ZIP_FILE"
           unzip -o "$ZIP_FILE" -d extracted
 
+      - name: Remove missing icon reference from manifest
+        run: |
+          sed -i '/android:icon="@mipmap\/ic_launcher"/d' extracted/PlutoAssistant/app/src/main/AndroidManifest.xml
+          echo "---- manifest after fix ----"
+          cat extracted/PlutoAssistant/app/src/main/AndroidManifest.xml
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
