@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ANDROID_SDK_ROOT: /usr/local/lib/android-sdk
+      ANDROID_SDK_ROOT: /home/runner/android-sdk
 
     steps:
       - name: Checkout code
@@ -47,7 +47,7 @@ jobs:
       - name: Build debug APK
         working-directory: extracted/PlutoAssistant
         env:
-          ANDROID_SDK_ROOT: /usr/local/lib/android-sdk
+          ANDROID_SDK_ROOT: /home/runner/android-sdk
         run: gradle assembleDebug
 
       - name: Upload APK
